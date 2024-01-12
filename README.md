@@ -1,7 +1,9 @@
-## INTERS
-
 <div align=center>
 <img src="https://github.com/DaoD/INTERS/blob/main/logo1.jpg" width="150px">
+</div>
+
+
+## INTERS: Unlocking the Power of Large Language Models in Search with Instruction Tuning</h2>
 <p>
 <img src="https://img.shields.io/badge/MIT-License-blue" alt="license">
 </p>
@@ -10,9 +12,6 @@
   •
 <a href="">🤗 HuggingFace</a>
 </p>
-</div>
-
-**INTERS: Unlocking the Power of Large Language Models in Search with Instruction Tuning**
 
 **Authors**: Yutao Zhu, Peitian Zhang, Chenghao Zhang, Yifei Chen, Binyu Xie, Zheng Liu, Zhicheng Dou, and Ji-Rong Wen
 
