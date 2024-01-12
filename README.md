@@ -10,7 +10,7 @@
 </a>
 </p>
 <p>
-📃 <a href="">ArXiv</a>
+📃 <a href="">ArXiv Paper</a>
   •
 🤗 <a href="">HuggingFace Model</a> 
   •
