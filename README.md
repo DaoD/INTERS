@@ -1,6 +1,14 @@
 <div align=center>
 <img src="https://github.com/DaoD/INTERS/blob/main/logo1.jpg" width="150px">
 <h1>INTERS: Unlocking the Power of Large Language Models in Search with Instruction Tuning</h1>
+<p>
+<img src="https://img.shields.io/badge/MIT-License-blue" alt="license">
+</p>
+<p>
+<a href="">📃 ArXiv</a>
+  •
+<a href="">🤗 HuggingFace</a>
+</p>
 </div>
 
 ## Introduction
