@@ -5,7 +5,9 @@
 
 ## INTERS: Unlocking the Power of Large Language Models in Search with Instruction Tuning</h2>
 <p>
+<a href="https://github.com/DaoD/INTERS/blob/main/LICENSE">
 <img src="https://img.shields.io/badge/MIT-License-blue" alt="license">
+</a>
 </p>
 <p>
 <a href="">📃 ArXiv</a>
