@@ -10,9 +10,11 @@
 </a>
 </p>
 <p>
-<a href="">📃 ArXiv</a>
+📃 <a href="">ArXiv</a>
   •
-<a href="">🤗 HuggingFace</a>
+🤗 <a href="">HuggingFace Model</a> 
+  •
+📚 <a href="">Dataset</a>
 </p>
 
 **Authors**: Yutao Zhu, Peitian Zhang, Chenghao Zhang, Yifei Chen, Binyu Xie, Zheng Liu, Zhicheng Dou, and Ji-Rong Wen
