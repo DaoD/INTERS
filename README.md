@@ -37,9 +37,9 @@ Please kindly cite our paper if it helps your research:
             Ji-Rong Wen},
     title={INTERS: Unlocking the Power of Large Language Models in Search with Instruction Tuning},
     journal={CoRR},
-    volume={abs/},
+    volume={abs/2401.06532},
     year={2024},
-    url={https://arxiv.org/abs/},
+    url={https://arxiv.org/abs/2401.06532},
     eprinttype={arXiv},
     eprint={}
 }
