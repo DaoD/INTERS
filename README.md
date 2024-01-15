@@ -33,8 +33,8 @@ Please kindly cite our paper if it helps your research:
             Chenghao Zhang and
             Yifei Chen and
             Binyu Xie and
-            Zheng Liu and
             Zhicheng Dou and
+            Zheng Liu and
             Ji-Rong Wen},
     title={INTERS: Unlocking the Power of Large Language Models in Search with Instruction Tuning},
     journal={CoRR},
