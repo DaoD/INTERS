@@ -19,7 +19,7 @@
 </p>
 
 | Model                                                                            | Base mode                                                               |
-|----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+|:---------------------------------------------------------------------------------|:------------------------------------------------------------------------|
 | [INTERS-LLaMA-7b-Chat](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-chat)   | [LLaMA-2-7b](https://huggingface.co/meta-llama/Llama-2-7b-hf)           |
 | [INTERS-LLaMA-7b-Base](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-base) | [LLaMA-2-7b-chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) |
 | [INTERS-Mistral-7b](https://huggingface.co/yutaozhu94/INTERS-Mistral-7b)         | [Mistral-7b](https://huggingface.co/mistralai/Mistral-7B-v0.1)          |
