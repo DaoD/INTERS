@@ -9,6 +9,9 @@
 <img src="https://img.shields.io/badge/MIT-License-blue" alt="license">
 </a>
 </p>
+
+**Authors**: Yutao Zhu, Peitian Zhang, Chenghao Zhang, Yifei Chen, Binyu Xie, Zhicheng Dou, Zheng Liu, and Ji-Rong Wen
+
 <p>
 📃 <a href="https://arxiv.org/abs/2401.06532">ArXiv Paper</a>
   •
@@ -25,8 +28,6 @@
 | [INTERS-Mistral-7b](https://huggingface.co/yutaozhu94/INTERS-Mistral-7b)         | [Mistral-7b](https://huggingface.co/mistralai/Mistral-7B-v0.1)          |
 | [INTERS-Minima-3b](https://huggingface.co/yutaozhu94/INTERS-Minima-3b)           | [Minima-2-3b](https://huggingface.co/GeneZC/MiniMA-2-3B)                |
 | [INTERS-Falcon-1b](https://huggingface.co/yutaozhu94/INTERS-Falcon-1b)           | [Falcon-rw-1b](https://huggingface.co/tiiuae/falcon-rw-1b)              |
-
-**Authors**: Yutao Zhu, Peitian Zhang, Chenghao Zhang, Yifei Chen, Binyu Xie, Zhicheng Dou, Zheng Liu, and Ji-Rong Wen
 
 ⭐ **We will release the datasets, models, templates, and codes within a month (before Feb. 15th). Thanks for your attention!**
 
