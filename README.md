@@ -18,7 +18,7 @@
 🤗 HuggingFace Model List
 </p>
 
-| Model                                                                            | Base mode                                                               |
+| Model                                                                            | Backbone Model                                                          |
 |:---------------------------------------------------------------------------------|:------------------------------------------------------------------------|
 | [INTERS-LLaMA-7b-Chat](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-chat)   | [LLaMA-2-7b](https://huggingface.co/meta-llama/Llama-2-7b-hf)           |
 | [INTERS-LLaMA-7b-Base](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-base) | [LLaMA-2-7b-chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) |
