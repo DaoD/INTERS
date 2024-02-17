@@ -31,10 +31,19 @@ Large language models (LLMs) have demonstrated impressive capabilities in variou
 Our dataset and the models fine-tuned on it will be released soon!
 
 ## Tasks & Datasets
+<div align=center>
+<img src="https://github.com/DaoD/INTERS/blob/main/img/dataset.png">
+</div>
 
 ## Dataset Construction
+<div align=center>
+<img src="https://github.com/DaoD/INTERS/blob/main/img/process.jpg">
+</div>
 
 ## General Performance
+<div align=center>
+<img src="https://github.com/DaoD/INTERS/blob/main/img/in-domain-google.png">
+</div>
 
 ## Citation
 Please kindly cite our paper if it helps your research:
