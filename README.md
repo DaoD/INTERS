@@ -14,7 +14,7 @@
   •
 🤗 <a href="">HuggingFace Model</a> 
   •
-📚 <a href="">Dataset</a>
+📚 <a href="https://huggingface.co/datasets/yutaozhu94/INTERS">Dataset</a>
 </p>
 
 **Authors**: Yutao Zhu, Peitian Zhang, Chenghao Zhang, Yifei Chen, Binyu Xie, Zhicheng Dou, Zheng Liu, and Ji-Rong Wen
