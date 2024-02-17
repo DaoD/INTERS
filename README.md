@@ -60,21 +60,23 @@ We consider tasks under the categories of query understanding, document understa
 ## Citation
 Please kindly cite our paper if it helps your research:
 ```BibTex
-@article{Inters,
-    author={Yutao Zhu and
-            Peitian Zhang and
-            Chenghao Zhang and
-            Yifei Chen and
-            Binyu Xie and
-            Zhicheng Dou and
-            Zheng Liu and
-            Ji-Rong Wen},
-    title={INTERS: Unlocking the Power of Large Language Models in Search with Instruction Tuning},
-    journal={CoRR},
-    volume={abs/2401.06532},
-    year={2024},
-    url={https://arxiv.org/abs/2401.06532},
-    eprinttype={arXiv},
-    eprint={}
+@article{INTERS,
+  author       = {Yutao Zhu and
+                  Peitian Zhang and
+                  Chenghao Zhang and
+                  Yifei Chen and
+                  Binyu Xie and
+                  Zhicheng Dou and
+                  Zheng Liu and
+                  Ji{-}Rong Wen},
+  title        = {{INTERS:} Unlocking the Power of Large Language Models in Search with
+                  Instruction Tuning},
+  journal      = {CoRR},
+  volume       = {abs/2401.06532},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2401.06532},
+  doi          = {10.48550/ARXIV.2401.06532},
+  eprinttype    = {arXiv},
+  eprint       = {2401.06532}
 }
 ```
