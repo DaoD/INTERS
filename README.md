@@ -10,7 +10,7 @@
 </a>
 </p>
 <p>
-📃 <a href="">ArXiv Paper</a>
+📃 <a href="https://arxiv.org/abs/2401.06532">ArXiv Paper</a>
   •
 🤗 <a href="">HuggingFace Model</a> 
   •
