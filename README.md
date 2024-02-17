@@ -31,6 +31,7 @@ Large language models (LLMs) have demonstrated impressive capabilities in variou
 Our dataset and the models fine-tuned on it will be released soon!
 
 ## Tasks & Datasets
+We consider tasks under the categories of query understanding, document understanding, and query-document understanding. Our dataset consists of 20 tasks derived from 43 datasets. All tasks and datasets we used are shown in the figure below.
 <div align=center>
 <img src="https://github.com/DaoD/INTERS/blob/main/img/dataset.png">
 </div>
