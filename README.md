@@ -29,7 +29,8 @@
 | [INTERS-Minima-3b](https://huggingface.co/yutaozhu94/INTERS-Minima-3b)           | [Minima-2-3b](https://huggingface.co/GeneZC/MiniMA-2-3B)                |
 | [INTERS-Falcon-1b](https://huggingface.co/yutaozhu94/INTERS-Falcon-1b)           | [Falcon-rw-1b](https://huggingface.co/tiiuae/falcon-rw-1b)              |
 
-⭐ **We will release the datasets, models, templates, and codes within a month (before Feb. 15th). Thanks for your attention!**
+## News
+- Feb 17, 2024: We release the training set, part of the test set, and instructions. Other resources are still in preparation.
 
 ## Introduction
 <div align=center>
