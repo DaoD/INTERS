@@ -1,5 +1,5 @@
 <div align=center>
-<img src="https://github.com/DaoD/INTERS/blob/main/logo1.jpg" width="150px">
+<img src="https://github.com/DaoD/INTERS/blob/main/img/logo1.jpg" width="150px">
 </div>
 
 
