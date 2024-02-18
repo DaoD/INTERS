@@ -57,7 +57,7 @@ We consider tasks under the categories of query understanding, document understa
 <img src="https://github.com/DaoD/INTERS/blob/main/img/in-domain-google.png">
 </div>
 
-## Evaluation
+## Zero-shot Evaluation
 The evaluation script is under the ``evaluation`` directory.
 
 ### Required packages
