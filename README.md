@@ -30,7 +30,7 @@
 | [INTERS-Falcon-1b](https://huggingface.co/yutaozhu94/INTERS-Falcon-1b)           | [Falcon-rw-1b](https://huggingface.co/tiiuae/falcon-rw-1b)              |
 
 ## News
-- Feb, 2024: We release the training set, validation set, part of the test set, instruction templates, and fine-tuned models. Other resources are still in preparation.
+- Feb, 2024: We have released the dataset, instruction templates, fine-tuned models, and evaluation scripts.
 
 ## Introduction
 <div align=center>
