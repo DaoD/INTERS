@@ -315,7 +315,7 @@ class LM(nn.Module):
                     rerank_results[query_id].append(ranking_result)
         return dict(rerank_results)
     
-    def permutation_pipeline(self, item=None, rank_start=0, rank_end=100, prompt_template=None):
+    def permutation_pipeline(self, item=None, rank_start=0, rank_end=100, prompt_template=None, window_size=5):
         f_query = item["query"]
         num = len(item['hits'][rank_start: rank_end])
         fewshot_prompt = item["fewshot_prompt"]
@@ -345,7 +345,7 @@ class LM(nn.Module):
         permutation = self.tokenizer.decode(output_ids[0, input_ids.shape[1]:], skip_special_tokens=False)
         
         response = [int(match.group(1)) -1 for match in re.finditer(r"(\d+)", permutation)]
-        response = [x for x in response if 0<= x < 10]
+        response = [x for x in response if 0<= x < window_size]
         if len(response) == 0:
             return item
 
@@ -355,8 +355,8 @@ class LM(nn.Module):
                 new_response.append(x)
         response = new_response
 
-        if len(response) < 10:
-            full_set = set(range(0, 10))
+        if len(response) < window_size:
+            full_set = set(range(0, window_size))
             missing_number = full_set - set(response)
             response.extend(list(missing_number))
 
@@ -370,8 +370,7 @@ class LM(nn.Module):
         # input()
         return item
 
-    def sliding_windows(self, item=None, prompt_template=None, 
-                        rank_start=0, rank_end=100, window_size=5, step=3):
+    def sliding_windows(self, item=None, prompt_template=None, rank_start=0, rank_end=100, window_size=5, step=3):
         item = copy.deepcopy(item)
         end_pos = rank_end
         start_pos = rank_end - window_size
@@ -379,7 +378,7 @@ class LM(nn.Module):
             # if torch.distributed.get_rank() == 0:
             #     print(start_pos, rank_start)
             start_pos = max(start_pos, rank_start)
-            item = self.permutation_pipeline(item, start_pos, end_pos, prompt_template)
+            item = self.permutation_pipeline(item, start_pos, end_pos, prompt_template, window_size)
             end_pos = end_pos - step
             start_pos = start_pos - step
         return item
