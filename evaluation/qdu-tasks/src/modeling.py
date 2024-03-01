@@ -35,7 +35,6 @@ class LM(nn.Module):
         logger.info(f"loading tokenizer from {tokenizer_name_or_path}...")
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_name_or_path, cache_dir=cache_dir, padding_side=padding_side, trust_remote_code=True)
         if tokenizer.pad_token is None:
-            # NOTE: for models like Qwen, there is no pre-defined eos tokens
             if tokenizer.eos_token is None:
                 pad_token = "<|endoftext|>"
             else:
@@ -80,14 +79,12 @@ class LM(nn.Module):
         self.config = model.config
         self.tokenizer = tokenizer
 
-        # move model to the correct device / enable mixed precision
         if accelerator is not None:
             self.model = accelerator.prepare_model(model, device_placement=True, evaluation_mode=True)
         else:
             self.model = model
 
         self.rng = np.random.default_rng(42)
-        # ignore dropout and gradients
         self.eval()
 
     @property
@@ -190,7 +187,6 @@ class LM(nn.Module):
 
     def compare(self, query: str, docs: List, prompt_template: str, fewshot_prompt: Optional[str]=None):
         doc1, doc2 = docs[0], docs[1]
-        #doc1是第ind个，doc2是第ind-1个
         input_texts = [prompt_template.format(query=query, doc1=doc1, doc2=doc2) + "[1]", prompt_template.format(query=query, doc1=doc1, doc2=doc2) + "[2]", 
                        prompt_template.format(query=query, doc1=doc2, doc2=doc1) + "[1]", prompt_template.format(query=query, doc1=doc2, doc2=doc1) + "[2]"]#构成两条prompt
 
@@ -198,49 +194,34 @@ class LM(nn.Module):
         if fewshot_prompt is not None:
             input_texts = [fewshot_prompt + x for x in input_texts]
 
-        # 需要将prompt和标签拼在一起，以计算输出概率
-        # 第一个：认为原序靠后的文档比靠前的文档更相关，换位置
-        # 第二个：认为原序靠后的文档不如靠前的文档相关，不换位置
-        # 第三个：认为原序靠后的文档不如靠前的文档相关，不换位置
-        # 第四个：认为原序靠后的文档比靠前的文档更相关，换位置
-        inputs = self.tokenizer(input_texts, return_tensors="pt")#得到prompt的input
+        inputs = self.tokenizer(input_texts, return_tensors="pt")
         #print("input: ", inputs.device())
         
         target_texts = ["[1]", "[2]", "[1]", "[2]"]
-        targets = self.tokenizer(target_texts, add_special_tokens=False)["input_ids"]#获得目标输出的id
-        targets_length = [len(x) for x in targets]#获得目标输出的id长度，即每个输出对应几个id
+        targets = self.tokenizer(target_texts, add_special_tokens=False)["input_ids"]
+        targets_length = [len(x) for x in targets]
         
         labels = inputs["input_ids"].clone()
         for i, label in enumerate(labels):
-            labels[i, :-targets_length[i]] = -100#将需要计算的id保留，前面原prompt对应的id标记为-100，在模型计算时会省略掉
+            labels[i, :-targets_length[i]] = -100
         # inputs["labels"] = labels
         inputs = inputs.to(self.device)
 
-        outputs = self.model(**inputs)#.to(self.device)
-        logits = outputs["logits"].detach()#获得输出的logits值
+        outputs = self.model(**inputs)
+        logits = outputs["logits"].detach()
         logits = logits[:, :-1, :].contiguous()
         labels = labels[:, 1:].contiguous()
         labels = labels.to(logits.device)
-        batch_size = logits.shape[0]#获得batch_size
+        batch_size = logits.shape[0]
         token_loss = torch.nn.functional.cross_entropy(
             logits.flatten(0, 1),
             labels.reshape(-1),
             reduction="none"
-        ).reshape(batch_size, -1)#获得损失，在这里，损失是-log(p(t=n|t<n))
+        ).reshape(batch_size, -1)
         
-        valid_token_num = (labels != -100).sum(-1)#每条数据的有效token个数（非-100的）
-        #将损失加起来。由于是对数损失，因此相当于内部概率乘积，得到最终输出后几位（【1】【2】等）的概率
+        valid_token_num = (labels != -100).sum(-1)
+        
         token_prob = - token_loss.sum(-1) / valid_token_num
-
-        # for x in inputs["input_ids"]:
-        #     print("-"*50)
-        #     print(self.tokenizer.decode(x))
-        # # labels2 = labels.clone()
-        # # labels2[labels2==-100] = self.tokenizer.pad_token_id
-        # # print(f"labels:                 {self.tokenizer.batch_decode(labels2)}")
-        # print(f"likelihood:             {token_prob}")
-        # print(f"switch?                 {token_prob[0] > token_prob[1] and token_prob[2] < token_prob[3]}")
-        # input()
 
         if token_prob[0] > token_prob[1] and token_prob[2] < token_prob[3]:
             return f'change'
@@ -253,7 +234,6 @@ class LM(nn.Module):
             dataloader = accelerator.prepare(dataloader)
         
         for _, ranking_result in enumerate(tqdm(dataloader, desc="Pairwise Reranking", ncols=120)):
-            #采用bubblesort方法
             k = ranking_result["doc_ids"].size(dim=1)
             last_end = k - 1
             query = ranking_result["query"]
@@ -263,7 +243,7 @@ class LM(nn.Module):
 
             fewshot_prompts = ranking_result["fewshot_prompt"]
 
-            for i in range(batch_size):#对一个batch中的每个数据分别处理
+            for i in range(batch_size):
                 # NOTE: convert doc_ids to list
                 pairs = list(zip(ranking_result["docs"][i], ranking_result["doc_ids"][i]))
                 self.rng.shuffle(pairs)
@@ -287,16 +267,10 @@ class LM(nn.Module):
                             break
                         doc1 = ranking_result["docs"][i][current_ind]
                         doc2 = ranking_result["docs"][i][current_ind - 1]
-                        output = self.compare(query[i], [doc1, doc2], prompt_template=prompt_template, fewshot_prompt=fewshot_prompt)#输入模型比较两个documents的顺序
-                        if output == 'change':#靠后的document比靠前的document更相关,则交换位置（该步将两个documents交换顺序后又输入了一遍）
+                        output = self.compare(query[i], [doc1, doc2], prompt_template=prompt_template, fewshot_prompt=fewshot_prompt)
+                        if output == 'change':
                             ranking_result["docs"][i][current_ind - 1], ranking_result["docs"][i][current_ind] = ranking_result["docs"][i][current_ind], ranking_result["docs"][i][current_ind - 1]
                             ranking_result["doc_ids"][i][current_ind - 1], ranking_result["doc_ids"][i][current_ind] = ranking_result["doc_ids"][i][current_ind], ranking_result["doc_ids"][i][current_ind - 1]
-                            """
-                            比如输入doc1 = ranking[current_ind],doc2 = ranking[current_ind - 1]
-                            如果当document A为doc1,documen B为doc2时,模型输出A更相关,并且当document A为doc2,documen B为doc1时,模型输出B更相关
-                            则认为doc1比doc2更相关,需要互换位置
-                            """
-
                             if not is_change:
                                 is_change = True
                                 if last_end != k - 1:  # skip unchanged pairs at the bottom
@@ -364,10 +338,6 @@ class LM(nn.Module):
         rerank_candidates = [candidates[x] for x in response]
         item['hits'][rank_start: rank_end] = rerank_candidates
 
-        # if torch.distributed.get_rank() == 0:
-        #     print(messages)
-        # print(f"outputs:                    {response}")
-        # input()
         return item
 
     def sliding_windows(self, item=None, prompt_template=None, rank_start=0, rank_end=100, window_size=5, step=3):
@@ -375,8 +345,6 @@ class LM(nn.Module):
         end_pos = rank_end
         start_pos = rank_end - window_size
         while start_pos >= rank_start:
-            # if torch.distributed.get_rank() == 0:
-            #     print(start_pos, rank_start)
             start_pos = max(start_pos, rank_start)
             item = self.permutation_pipeline(item, start_pos, end_pos, prompt_template, window_size)
             end_pos = end_pos - step
@@ -406,28 +374,8 @@ class LM(nn.Module):
             windows = [window] * batch_size
             strides = [stride] * batch_size
             items = list(map(self.sliding_windows, items, prompt_templates, doc_start, doc_end, windows, strides))
-            """
-            items返回类型如下
-            item = {
-                'query': query(string),
-                'query_id': qid(int),
-                'hits': [
-                    {'document': document(string), 'docid': docid(int)},
-                    {'document': document(string), 'docid': docid(int)},
-                    {'document': document(string), 'docid': docid(int)},
-                ]
-            }
-            现在要将其转成这种格式:
-            {
-                qid: list[RerankResult],
-                ......
-            }
-            """
             query_ids = ranking_data.pop("query_id")
             doc_ids = torch.tensor([[hit["docid"] for hit in item["hits"]] for item in items], device=self.device)
-
-            # print(doc_ids)
-            # input()
 
             if accelerator is not None:
                 query_ids = accelerator.gather_for_metrics(query_ids)
