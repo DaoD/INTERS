@@ -188,7 +188,7 @@ class LM(nn.Module):
     def compare(self, query: str, docs: List, prompt_template: str, fewshot_prompt: Optional[str]=None):
         doc1, doc2 = docs[0], docs[1]
         input_texts = [prompt_template.format(query=query, doc1=doc1, doc2=doc2) + "[1]", prompt_template.format(query=query, doc1=doc1, doc2=doc2) + "[2]", 
-                       prompt_template.format(query=query, doc1=doc2, doc2=doc1) + "[1]", prompt_template.format(query=query, doc1=doc2, doc2=doc1) + "[2]"]#构成两条prompt
+                       prompt_template.format(query=query, doc1=doc2, doc2=doc1) + "[1]", prompt_template.format(query=query, doc1=doc2, doc2=doc1) + "[2]"]
 
         # NOTE: add fewshot prompt
         if fewshot_prompt is not None:
