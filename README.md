@@ -23,8 +23,8 @@
 
 | Model                                                                            | Backbone Model                                                          |
 |:---------------------------------------------------------------------------------|:------------------------------------------------------------------------|
-| [INTERS-LLaMA-7b-Chat](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-chat)   | [LLaMA-2-7b](https://huggingface.co/meta-llama/Llama-2-7b-hf)           |
-| [INTERS-LLaMA-7b-Base](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-base) | [LLaMA-2-7b-chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) |
+| [INTERS-LLaMA-7b-Chat](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-chat)   | [LLaMA-2-7b-chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) |
+| [INTERS-LLaMA-7b-Base](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-base)   | [LLaMA-2-7b](https://huggingface.co/meta-llama/Llama-2-7b-hf)           |
 | [INTERS-Mistral-7b](https://huggingface.co/yutaozhu94/INTERS-Mistral-7b)         | [Mistral-7b](https://huggingface.co/mistralai/Mistral-7B-v0.1)          |
 | [INTERS-Minima-3b](https://huggingface.co/yutaozhu94/INTERS-Minima-3b)           | [Minima-2-3b](https://huggingface.co/GeneZC/MiniMA-2-3B)                |
 | [INTERS-Falcon-1b](https://huggingface.co/yutaozhu94/INTERS-Falcon-1b)           | [Falcon-rw-1b](https://huggingface.co/tiiuae/falcon-rw-1b)              |
