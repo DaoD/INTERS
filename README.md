@@ -30,6 +30,7 @@
 | [INTERS-Falcon-1b](https://huggingface.co/yutaozhu94/INTERS-Falcon-1b)           | [Falcon-rw-1b](https://huggingface.co/tiiuae/falcon-rw-1b)              |
 
 ## News
+- May, 2024: We are happy that INTERS has been accepted by ACL 2024 main conference!
 - Feb, 2024: We have released the dataset, instruction templates, fine-tuned models, and evaluation scripts.
 
 ## Introduction
