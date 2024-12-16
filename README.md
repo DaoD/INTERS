@@ -13,7 +13,7 @@
 **Authors**: Yutao Zhu, Peitian Zhang, Chenghao Zhang, Yifei Chen, Binyu Xie, Zhicheng Dou, Zheng Liu, and Ji-Rong Wen
 
 <p>
-📃 <a href="https://arxiv.org/abs/2401.06532">ArXiv Paper</a>
+📃 <a href="https://arxiv.org/abs/2401.06532">Paper</a>
   •
 📚 <a href="https://huggingface.co/datasets/yutaozhu94/INTERS">Dataset</a>
 </p>
@@ -160,23 +160,27 @@ bash cqa.sh
 ## Citation
 Please kindly cite our paper if it helps your research:
 ```BibTex
-@article{INTERS,
+@inproceedings{INTERS,
   author       = {Yutao Zhu and
                   Peitian Zhang and
                   Chenghao Zhang and
                   Yifei Chen and
                   Binyu Xie and
-                  Zhicheng Dou and
                   Zheng Liu and
-                  Ji{-}Rong Wen},
+                  Ji{-}Rong Wen and
+                  Zhicheng Dou},
+  editor       = {Lun{-}Wei Ku and
+                  Andre Martins and
+                  Vivek Srikumar},
   title        = {{INTERS:} Unlocking the Power of Large Language Models in Search with
                   Instruction Tuning},
-  journal      = {CoRR},
-  volume       = {abs/2401.06532},
+  booktitle    = {Proceedings of the 62nd Annual Meeting of the Association for Computational
+                  Linguistics (Volume 1: Long Papers), {ACL} 2024, Bangkok, Thailand,
+                  August 11-16, 2024},
+  pages        = {2782--2809},
+  publisher    = {Association for Computational Linguistics},
   year         = {2024},
-  url          = {https://doi.org/10.48550/arXiv.2401.06532},
-  doi          = {10.48550/ARXIV.2401.06532},
-  eprinttype    = {arXiv},
-  eprint       = {2401.06532}
+  url          = {https://doi.org/10.18653/v1/2024.acl-long.154},
+  doi          = {10.18653/V1/2024.ACL-LONG.154},
 }
 ```
