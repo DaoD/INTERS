@@ -27,9 +27,7 @@
 | [INTERS-LLaMA-7b-Base](https://huggingface.co/yutaozhu94/INTERS-LLaMA-7b-base)   | [LLaMA-2-7b](https://huggingface.co/meta-llama/Llama-2-7b-hf)           |
 | [INTERS-Mistral-7b](https://huggingface.co/yutaozhu94/INTERS-Mistral-7b)         | [Mistral-7b](https://huggingface.co/mistralai/Mistral-7B-v0.1)          |
 | [INTERS-Minima-3b](https://huggingface.co/yutaozhu94/INTERS-Minima-3b)           | [Minima-2-3b](https://huggingface.co/GeneZC/MiniMA-2-3B)                |
-| [INTERS-Falcon-1b](https://huggingface.co/yutaozhu94/INTERS-Falcon-1b)           | [Falcon-rw-1b](https://huggingface.co/tiiuae/falcon-rw-1b)*              |
-
-\* Falcon-rw-1b requires Python 3.9/3.10.
+| [INTERS-Falcon-1b](https://huggingface.co/yutaozhu94/INTERS-Falcon-1b)           | [Falcon-rw-1b](https://huggingface.co/tiiuae/falcon-rw-1b)              |
 
 ## News
 - May, 2024: We are happy that INTERS has been accepted by ACL 2024 main conference!
@@ -72,6 +70,7 @@ rouge_score         0.1.2
 nltk                3.8.1
 accelerate          0.26.1
 ```
+\* Falcon-rw-1b requires Python 3.9/3.10.
 
 ### For query understanding tasks and document understanding tasks (qu-du-tasks)
 This evaluation script use pytorch DDP for text generation.
