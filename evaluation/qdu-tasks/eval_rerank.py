@@ -206,7 +206,7 @@ def process_rerank(tokenizer, rerank_method, prompt_template, query_max_length=6
                 docs = ""
                 rank = 0
                 for value in idx_document.values():
-                    rank + 1
+                    rank += 1
                     docs += f"[{rank}] " + value + "\n"
                 prompt = prompt_template.format(query=fs_query, num=rank, docs=docs)
                 prompt += " " + result
